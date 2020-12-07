@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import QuestionContainer from "./Containers/QuestionContainer";
 
 class App extends React.Component {
   render() {
     return (
       <main>
-        <QuestionContainer />
+        <h1>Hello World!</h1>
+        <p>Nice to meet you React</p>
       </main>
     );
   }
