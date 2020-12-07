@@ -32,7 +32,10 @@ class Form extends Component {
 
     fetchAPI = () => {
         console.log("Lets fetch some json")
-        let url  = `https://opentdb.com/api.php?amount=${this.state.players * this.state.rounds}&category=10&difficulty=easy&type=multiple`;
+        const r = this.state.rounds
+        const p = this.state.players
+        const multi = p*r*4
+        let url  = `https://opentdb.com/api.php?amount=${multi}&category=10&difficulty=easy&type=multiple`;
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -48,20 +51,20 @@ class Form extends Component {
             <div>
             <div> 
             
-            <form onSubmit={this.handleClick}>
+            <form >
             <input type="text"  name="players" placeholder="Enter the number of players" value={this.state.players} onChange={this.handleInputChange} />
             <input type="submit" id="submit" value="Submit" />
             </form>
             </div>
             <div> 
             
-            <form onSubmit={this.handleClick}>
+            <form >
             <input type="text"  name="rounds" placeholder="Enter the number of rounds" value={this.state.rounds} onChange={this.handleInputChange} />
             <input type="submit" id="submit" value="Submit" />
             </form>
             </div>
             <form >
-                <button value="easy" > Easy</button>
+                <button value="easy" onClick={this.handleClick}> Easy</button>
                 <button value="medium"> medium</button>
                 <button value="hard"> Hard</button>
                 <button value=""> random</button>
