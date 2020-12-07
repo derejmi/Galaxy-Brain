@@ -8,7 +8,7 @@ class Home extends Component {
         return(
             <div>
             <h1> This is the front page.</h1>
-            // <Form />
+        
             </div>
 
         )
