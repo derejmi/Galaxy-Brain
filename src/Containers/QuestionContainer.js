@@ -11,6 +11,7 @@ class QuestionContainer extends React.Component {
     difficulty: "",
     players: "",
     rounds: "",
+    total: "",
     selection: [],
   };
   handleInputChange = (e) => {
@@ -35,41 +36,49 @@ class QuestionContainer extends React.Component {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        this.setState({ selection: data.results, questionNumber: 1 });
+        this.setState({
+          selection: data.results,
+          questionNumber: 1,
+          total: multi,
+        });
         console.log("check here");
         console.log(this.state.selection);
       });
   };
 
   render() {
-    // console.log(this.state.questionData);
-    return (
-      <div>
-        <div>
-          <Form
-            handleClick={this.handleClick}
-            handleInputChange={this.handleInputChange}
-            rounds={this.state.rounds}
-            players={this.state.players}
-            difficulty={this.state.difficulty}
-          />
-        </div>
-        {this.state.questionNumber ? (
-          <div>
-            <Question
-              data={this.state.selection}
-              questionNumber={this.state.questionNumber}
+    const view = () => {
+      switch (true) {
+        case this.state.questionNumber === 0:
+          return (
+            <Form
+              handleClick={this.handleClick}
+              handleInputChange={this.handleInputChange}
+              rounds={this.state.rounds}
+              players={this.state.players}
+              difficulty={this.state.difficulty}
             />
-            <Answers
-              data={this.state.selection}
-              questionNumber={this.state.questionNumber}
-            />
-          </div>
-        ) : (
-          <h1>Welcome to Galaxy Brain </h1>
-        )}
-      </div>
-    );
+          );
+        case this.state.questionNumber > 0 &&
+          this.state.questionNumber <= this.state.total:
+          return (
+            <div>
+              <Question
+                data={this.state.selection}
+                questionNumber={this.state.questionNumber}
+              />
+              <Answers
+                data={this.state.selection}
+                questionNumber={this.state.questionNumber}
+              />
+            </div>
+          );
+        default:
+          return <h1>Game Over! Winner was player...</h1>;
+      }
+    };
+
+    return <div>{view()}</div>;
   }
 }
 
