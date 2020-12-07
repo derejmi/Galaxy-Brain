@@ -26,6 +26,31 @@ class QuestionContainer extends React.Component {
     this.fetchAPI();
   };
 
+  setPlayers = () => {
+    switch (this.state.players) {
+      case "1":
+        this.setState({ player1: { score: 0 } });
+        break;
+      case "2":
+        this.setState({ player1: { score: 0 }, player2: { score: 0 } });
+        break;
+      case "3":
+        this.setState({
+          player1: { score: 0 },
+          player2: { score: 0 },
+          player3: { score: 0 },
+        });
+        break;
+      default:
+        this.setState({
+          player1: { score: 0 },
+          player2: { score: 0 },
+          player3: { score: 0 },
+          player4: { score: 0 },
+        });
+    }
+  };
+
   fetchAPI = () => {
     console.log("Lets fetch some json");
     const r = this.state.rounds;
@@ -41,9 +66,18 @@ class QuestionContainer extends React.Component {
           questionNumber: 1,
           total: multi,
         });
+        this.setPlayers();
+
         console.log("check here");
         console.log(this.state.selection);
       });
+  };
+
+  handleAnswerClick = (e) => {
+    debugger;
+    e.preventDefault;
+    const prevCount = this.state.questionNumber;
+    this.setState({ questionNumber: prevCount + 1 });
   };
 
   render() {
@@ -70,6 +104,7 @@ class QuestionContainer extends React.Component {
               <Answers
                 data={this.state.selection}
                 questionNumber={this.state.questionNumber}
+                handleAnswerClick={this.handleAnswerClick}
               />
             </div>
           );
