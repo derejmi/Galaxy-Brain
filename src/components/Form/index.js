@@ -20,7 +20,6 @@ class Form extends Component {
 
     handleClick = (event) => {
         event.preventDefault();
-        
         this.fetchAPI()
     }
 
@@ -36,7 +35,7 @@ class Form extends Component {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                this.setState({selection: data })
+                this.setState({selection: data.results })
                 console.log("check here")
                 console.log(this.state.selection)
             })
@@ -53,11 +52,9 @@ class Form extends Component {
             </form>
             {/* </div> */}
 
-            <div> 
             <form >
             <input type="number" min="1" max="5" name="rounds" placeholder="Enter the number of rounds" value={this.state.rounds} onChange={this.handleInputChange} />
             </form>
-            </div>
             
             <form >
                 <h2>Choose a difficulty</h2>
@@ -66,9 +63,8 @@ class Form extends Component {
                 <button value="hard" name="difficulty" onClick={this.handleInputChange}> Hard</button>
                 <button value="" onClick={this.handleClick}> Random</button>
             </form>
-            {/* </div> */}
-       
-            {/* <h2>{this.state.selection.results}</h2> */}
+
+            <button>Start game</button>    
             </div>
         )}
 
