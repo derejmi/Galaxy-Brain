@@ -1,32 +1,57 @@
 import React from "react";
-import data from "../api/dummyData.js";
-import Score from "../Components/Score.js";
-import Question from "../Components/Question.js";
-import Answers from "../Components/Answers.js";
+// import Score from "../components/Score.js";
+// import Question from "../components/Question.js";
+// import Answers from "../components/Answers.js";
+import Form from "../components/Form/index"
 
 class QuestionContainer extends React.Component {
   //URL not needed just for reference
   state = {
-    URL:
-      "https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple",
-    questionData: data,
-    questionNumber: 9,
-  };
+      questionNumber: 1,
+      difficulty: "",
+      players: "",
+      rounds: "",
+      selection: []
+  }
+  handleInputChange = (e) => {
+    e.preventDefault();
+    this.setState({
+        [e.target.name]: e.target.value
+    });
+}
+
+
+handleClick = (event) => {
+    event.preventDefault();
+    this.fetchAPI()
+}
+
+fetchAPI = () => {
+  console.log("Lets fetch some json")
+  const r = this.state.rounds
+  const p = this.state.players
+  const multi = p*r
+  let url  = `https://opentdb.com/api.php?amount=${multi}&category=10&difficulty=${this.state.difficulty}&type=multiple`;
+  fetch(url)
+      .then(res => res.json())
+      .then(data => {
+          console.log(data);
+          this.setState({selection: data.results })
+          console.log("check here")
+          console.log(this.state.selection)
+      })
+}
+
+  
 
   render() {
-    console.log(this.state.questionData);
+    // console.log(this.state.questionData);
     return (
+
+      
       <div>
-        <Form />
-        <Score />
-        <Question
-          data={this.state.questionData.results}
-          questionNumber={this.state.questionNumber}
-        />
-        <Answers
-          data={this.state.questionData.results}
-          questionNumber={this.state.questionNumber}
-        />
+        <Form handleClick={this.handleClick} handleInputChange={this.handleInputChange} rounds={this.state.rounds} players={this.state.players} difficulty={this.state.difficulty}/>
+
       </div>
     );
   }
