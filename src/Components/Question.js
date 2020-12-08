@@ -6,7 +6,7 @@ const Question = (props) => {
 
   return (
     <div>
-      <h1>{question}</h1>
+      <h1>{atob(question)}</h1>
     </div>
   );
 };

@@ -48,12 +48,12 @@ class Form extends Component {
                 <h2>Select number of players and rounds</h2>
             
             <form>
-            <input type="number" min="1" max="4" name="players" placeholder="Enter the number of players" value={this.props.players} onChange={this.props.handleInputChange} />
+            <input type="number" min="1" max="4" name="players" placeholder="Enter the number of players" value={this.props.players} onChange={this.props.handleInputChange} required/>
             </form>
             {/* </div> */}
 
             <form >
-            <input type="number" min="1" max="5" name="rounds" placeholder="Enter the number of rounds" value={this.props.rounds} onChange={this.props.handleInputChange} />
+            <input type="number" min="1" max="5" name="rounds" placeholder="Enter the number of rounds" value={this.props.rounds} onChange={this.props.handleInputChange} required/>
             </form>
             
             <form >
