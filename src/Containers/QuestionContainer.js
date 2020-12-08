@@ -74,7 +74,6 @@ class QuestionContainer extends React.Component {
   };
 
   handleAnswerClick = (e) => {
-    debugger;
     e.preventDefault;
     const prevCount = this.state.questionNumber;
     this.setState({ questionNumber: prevCount + 1 });
@@ -108,6 +107,8 @@ class QuestionContainer extends React.Component {
               />
             </div>
           );
+        case this.state.questionNumber > 0:
+          return <h1>Please fill in all form fields </h1>;
         default:
           return <h1>Game Over! Winner was player...</h1>;
       }
