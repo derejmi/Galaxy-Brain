@@ -29,24 +29,34 @@ class QuestionContainer extends React.Component {
   setPlayers = () => {
     switch (this.state.players) {
       case "1":
-        this.setState({ player1: { score: 0 } });
+        this.setState({ playerStats: [{ player: "Player 1", score: 0 }] });
         break;
       case "2":
-        this.setState({ player1: { score: 0 }, player2: { score: 0 } });
+        this.setState({
+          playerStats: [
+            { player: "Player 1", score: 0 },
+            { player: "Player 2", score: 0 },
+          ],
+        });
         break;
       case "3":
         this.setState({
-          player1: { score: 0 },
-          player2: { score: 0 },
-          player3: { score: 0 },
+          playerStats: [
+            { player: "Player 1", score: 0 },
+            { player: "Player 2", score: 0 },
+            { player: "Player 3", score: 0 },
+          ],
         });
+        //this.setState({players: [{player: player1, score: 0}, ]})
         break;
       default:
         this.setState({
-          player1: { score: 0 },
-          player2: { score: 0 },
-          player3: { score: 0 },
-          player4: { score: 0 },
+          playerStats: [
+            { player: "Player 1", score: 0 },
+            { player: "Player 2", score: 0 },
+            { player: "Player 3", score: 0 },
+            { player: "Player 4", score: 0 },
+          ],
         });
     }
   };
