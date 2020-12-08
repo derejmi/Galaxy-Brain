@@ -31,7 +31,7 @@ class Answers extends React.Component {
       <div>
         {newArray.map((elem, idx) => (
           <button onClick={this.props.handleAnswerClick} key={idx + 1}>
-            {elem}
+            {atob(elem)}
           </button>
         ))}
       </div>

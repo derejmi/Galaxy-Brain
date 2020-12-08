@@ -56,7 +56,7 @@ class QuestionContainer extends React.Component {
     const r = this.state.rounds;
     const p = this.state.players;
     const multi = p * r;
-    let url = `https://opentdb.com/api.php?amount=${multi}&category=10&difficulty=${this.state.difficulty}&type=multiple`;
+    let url = `https://opentdb.com/api.php?amount=${multi}&category=10&difficulty=${this.state.difficulty}&type=multiple&encode=base64`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
