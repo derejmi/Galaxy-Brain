@@ -74,8 +74,14 @@ class QuestionContainer extends React.Component {
   };
 
   handleAnswerClick = (e) => {
-    e.preventDefault;
+    const answer = e.target.textContent;
+    console.log(e);
     const prevCount = this.state.questionNumber;
+    const questionIndex = prevCount - 1;
+    const correctAnswer = this.state.selection[questionIndex]["correct_answer"];
+    console.log(answer, correctAnswer);
+    //if answer = correctAnswer - increment score...
+    //
     this.setState({ questionNumber: prevCount + 1 });
   };
 
@@ -107,7 +113,7 @@ class QuestionContainer extends React.Component {
               />
             </div>
           );
-        case this.state.questionNumber > 0:
+        case this.state.questionNumber > 0 && !this.state.total:
           return <h1>Please fill in all form fields </h1>;
         default:
           return <h1>Game Over! Winner was player...</h1>;
