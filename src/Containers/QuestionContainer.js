@@ -1,59 +1,119 @@
 import React from "react";
 // import Score from "../components/Score.js";
-// import Question from "../components/Question.js";
-// import Answers from "../components/Answers.js";
-import Form from "../components/Form/index"
+import Question from "../components/Question.js";
+import Answers from "../components/Answers.js";
+import Form from "../components/Form/index";
 
 class QuestionContainer extends React.Component {
   //URL not needed just for reference
   state = {
-      questionNumber: 1,
-      difficulty: "",
-      players: "",
-      rounds: "",
-      selection: []
-  }
+    questionNumber: 0,
+    difficulty: "",
+    players: "",
+    rounds: "",
+    total: "",
+    selection: [],
+  };
   handleInputChange = (e) => {
     e.preventDefault();
     this.setState({
-        [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
-}
+  };
 
-
-handleClick = (event) => {
+  handleClick = (event) => {
     event.preventDefault();
-    this.fetchAPI()
-}
+    this.fetchAPI();
+  };
 
-fetchAPI = () => {
-  console.log("Lets fetch some json")
-  const r = this.state.rounds
-  const p = this.state.players
-  const multi = p*r
-  let url  = `https://opentdb.com/api.php?amount=${multi}&category=10&difficulty=${this.state.difficulty}&type=multiple`;
-  fetch(url)
-      .then(res => res.json())
-      .then(data => {
-          console.log(data);
-          this.setState({selection: data.results })
-          console.log("check here")
-          console.log(this.state.selection)
-      })
-}
+  setPlayers = () => {
+    switch (this.state.players) {
+      case "1":
+        this.setState({ player1: { score: 0 } });
+        break;
+      case "2":
+        this.setState({ player1: { score: 0 }, player2: { score: 0 } });
+        break;
+      case "3":
+        this.setState({
+          player1: { score: 0 },
+          player2: { score: 0 },
+          player3: { score: 0 },
+        });
+        break;
+      default:
+        this.setState({
+          player1: { score: 0 },
+          player2: { score: 0 },
+          player3: { score: 0 },
+          player4: { score: 0 },
+        });
+    }
+  };
 
-  
+  fetchAPI = () => {
+    console.log("Lets fetch some json");
+    const r = this.state.rounds;
+    const p = this.state.players;
+    const multi = p * r;
+    let url = `https://opentdb.com/api.php?amount=${multi}&category=10&difficulty=${this.state.difficulty}&type=multiple`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          selection: data.results,
+          questionNumber: 1,
+          total: multi,
+        });
+        this.setPlayers();
+
+        console.log("check here");
+        console.log(this.state.selection);
+      });
+  };
+
+  handleAnswerClick = (e) => {
+    debugger;
+    e.preventDefault;
+    const prevCount = this.state.questionNumber;
+    this.setState({ questionNumber: prevCount + 1 });
+  };
 
   render() {
-    // console.log(this.state.questionData);
-    return (
+    const view = () => {
+      switch (true) {
+        case this.state.questionNumber === 0:
+          return (
+            <Form
+              handleClick={this.handleClick}
+              handleInputChange={this.handleInputChange}
+              rounds={this.state.rounds}
+              players={this.state.players}
+              difficulty={this.state.difficulty}
+            />
+          );
+        case this.state.questionNumber > 0 &&
+          this.state.questionNumber <= this.state.total:
+          return (
+            <div>
+              <Question
+                data={this.state.selection}
+                questionNumber={this.state.questionNumber}
+              />
+              <Answers
+                data={this.state.selection}
+                questionNumber={this.state.questionNumber}
+                handleAnswerClick={this.handleAnswerClick}
+              />
+            </div>
+          );
+        default:
+          return <h1>Game Over! Winner was player...</h1>;
+      }
+    };
 
-      
-      <div>
-        <Form handleClick={this.handleClick} handleInputChange={this.handleInputChange} rounds={this.state.rounds} players={this.state.players} difficulty={this.state.difficulty}/>
-
-      </div>
-    );
+    return <div>{view()}</div>;
   }
 }
 
