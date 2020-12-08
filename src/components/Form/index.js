@@ -41,10 +41,11 @@ class Form extends Component {
     console.log(this.props);
     return (
       <div className="form">
-        <h2>Select number of players and rounds</h2>
+        <h2 id="select">Select number of players and rounds</h2>
 
         <form id="form-players">
           <input
+            id="input-players"
             type="number"
             min="1"
             max="4"
@@ -58,6 +59,7 @@ class Form extends Component {
 
         <form id="form-rounds">
           <input
+            id="input-rounds"
             type="number"
             min="1"
             max="5"
@@ -76,7 +78,6 @@ class Form extends Component {
             name="difficulty"
             onClick={this.props.handleInputChange}
           >
-            {" "}
             Easy
           </button>
           <button
@@ -85,15 +86,14 @@ class Form extends Component {
             name="difficulty"
             onClick={this.props.handleInputChange}
           >
-            {" "}
             Medium
           </button>
           <button
+            id="button-hard"
             value="hard"
             name="difficulty"
             onClick={this.props.handleInputChange}
           >
-            {" "}
             Hard
           </button>
           <button
@@ -102,7 +102,6 @@ class Form extends Component {
             name="difficulty"
             onClick={this.props.handleInputChange}
           >
-            {" "}
             Random
           </button>
         </form>
