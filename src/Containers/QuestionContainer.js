@@ -78,7 +78,9 @@ class QuestionContainer extends React.Component {
     console.log(e);
     const prevCount = this.state.questionNumber;
     const questionIndex = prevCount - 1;
-    const correctAnswer = this.state.selection[questionIndex]["correct_answer"];
+    const correctAnswer = atob(
+      this.state.selection[questionIndex]["correct_answer"]
+    );
     console.log(answer, correctAnswer);
     //if answer = correctAnswer - increment score...
     //
