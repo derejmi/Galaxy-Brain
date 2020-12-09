@@ -1,4 +1,5 @@
 import React from "react";
+import "./Answers.css";
 
 // const Answers = (props) => {
 //   debugger;
@@ -28,9 +29,13 @@ class Answers extends React.Component {
     const newArray = [...answersArray];
     newArray.splice(randomNo, 0, correct);
     return (
-      <div>
+      <div className="answerButtonsContainer">
         {newArray.map((elem, idx) => (
-          <button onClick={this.props.handleAnswerClick} key={idx + 1}>
+          <button
+            className="answerButtons"
+            onClick={this.props.handleAnswerClick}
+            key={idx + 1}
+          >
             {atob(elem)}
           </button>
         ))}
