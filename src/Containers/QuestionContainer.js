@@ -110,6 +110,7 @@ class QuestionContainer extends React.Component {
       this.nextTurn();
     }
     console.log("playerStats ->", this.state.playerStats)
+    console.log("current-score",this.state.playerStats[currentPlayerIndex].score)
     //
     this.setState({ questionNumber: prevCount + 1 });
     this.nextTurn();
@@ -117,7 +118,7 @@ class QuestionContainer extends React.Component {
 
   nextTurn = () => {
     const { playerStats, current } = this.state;
-    const val = current === playerStats.length - 1 ? 1 : current + 1;
+    const val = current === playerStats.length - 1 ? 0 : current + 1;
     this.setState({ current: val });
     console.log("current-new",current)
     console.log("val",val)
@@ -140,7 +141,8 @@ class QuestionContainer extends React.Component {
           this.state.questionNumber <= this.state.total:
           return (
             <div>
-              <Score current={this.state.current}/>
+              <Score 
+              current={this.state.current}/>
               <Question
                 data={this.state.selection}
                 questionNumber={this.state.questionNumber}
