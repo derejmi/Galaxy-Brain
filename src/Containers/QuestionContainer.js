@@ -1,7 +1,7 @@
 import React from "react";
 // import Score from "../components/Score.js";
-import Question from "../components/Question.js";
-import Answers from "../components/Answers.js";
+import Question from "../Components/Question/Question.js";
+import Answers from "../Components/Answers/Answers.js";
 import Form from "../components/Form/index";
 
 class QuestionContainer extends React.Component {

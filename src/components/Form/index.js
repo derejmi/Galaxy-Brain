@@ -1,29 +1,111 @@
-import React, { Component } from 'react';
-import './form.css'
+import React, { Component } from "react";
+import "./form.css";
 
 class Form extends Component {
-    // state = {
-    //     difficulty: "",
-    //     players: "",
-    //     rounds: "",
-    //     selection: []
-    // }
+  // state = {
+  //     difficulty: "",
+  //     players: "",
+  //     rounds: "",
+  //     selection: []
+  // }
+
+  // handleInputChange = (e) => {
+  //     e.preventDefault();
+  //     this.setState({
+  //         [e.target.name]: e.target.value
+  //     });
+  // }
+
+  // handleClick = (event) => {
+  //     event.preventDefault();
+  //     this.fetchAPI()
+  // }
+
+  // fetchAPI = () => {
+  //     console.log("Lets fetch some json")
+  //     const r = this.state.rounds
+  //     const p = this.state.players
+  //     const multi = p*r
+  //     let url  = `https://opentdb.com/api.php?amount=${multi}&category=10&difficulty=${this.state.difficulty}&type=multiple`;
+  //     fetch(url)
+  //         .then(res => res.json())
+  //         .then(data => {
+  //             console.log(data);
+  //             this.setState({selection: data.results })
+  //             console.log("check here")
+  //             console.log(this.state.selection)
+  //         })
+  // }
+
+  render() {
+    console.log(this.props);
+    return (
+      <div className="form">
+        <h2 id="select">Select number of players and rounds</h2>
+
+        <form id="form-players">
+          <input
+            id="input-players"
+            type="number"
+            min="1"
+            max="4"
+            name="players"
+            placeholder="Enter the number of players"
+            value={this.props.players}
+            onChange={this.props.handleInputChange}
+          />
+        </form>
+        {/* </div> */}
+
+        <form id="form-rounds">
+          <input
+            id="input-rounds"
+            type="number"
+            min="1"
+            max="5"
+            name="rounds"
+            placeholder="Enter the number of rounds"
+            value={this.props.rounds}
+            onChange={this.props.handleInputChange}
+          />
+        </form>
 
 
-    // handleInputChange = (e) => {
-    //     e.preventDefault();
-    //     this.setState({
-    //         [e.target.name]: e.target.value
-    //     });
-    // }
-
-
-    // handleClick = (event) => {
-    //     event.preventDefault();
-    //     this.fetchAPI()
-    // }
-
-
+        <form id="form-difficulty">
+          <h2>Choose a difficulty</h2>
+          <button
+            id="button-easy"
+            value="easy"
+            name="difficulty"
+            onClick={this.props.handleInputChange}
+          >
+            Easy
+          </button>
+          <button
+            id="button-medium"
+            value="medium"
+            name="difficulty"
+            onClick={this.props.handleInputChange}
+          >
+            Medium
+          </button>
+          <button
+            id="button-hard"
+            value="hard"
+            name="difficulty"
+            onClick={this.props.handleInputChange}
+          >
+            Hard
+          </button>
+          <button
+            id="button-random"
+            value="random"
+            name="difficulty"
+            onClick={this.props.handleInputChange}
+          >
+            Random
+          </button>
+        </form>
 
     // fetchAPI = () => {
     //     console.log("Lets fetch some json")
@@ -74,6 +156,13 @@ class Form extends Component {
             </div>
         )}
 
+
+        <button id="button-start" onClick={this.props.handleClick}>
+          Start game
+        </button>
+      </div>
+    );
+  }
 }
 
 export default Form;
