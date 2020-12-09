@@ -6,6 +6,14 @@ class Form extends Component {
     console.log(this.props);
     return (
       <div className="form">
+
+        <p>
+          Welcome to Galaxy Brain, a multiplayer game where users can take turns
+          to answer trivia questions!
+        </p>
+
+        <div className="playerandrounds">
+
         <h2 id="select">Select number of players and rounds</h2>
 
         <form id="form-players">
@@ -87,6 +95,7 @@ class Form extends Component {
         <button id="button-start" onClick={this.props.handleClick}>
           Start game
         </button>
+
       </div>
     );
   }

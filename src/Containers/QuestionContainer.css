@@ -1,0 +1,18 @@
+.message {
+  padding: 5%;
+  font-size: 30px;
+}
+
+.returnButton {
+  button {
+    margin: 5%;
+    background-color: #292442;
+    border: none;
+    color: white;
+    /* padding: 15px 32px; */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+}

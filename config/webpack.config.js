@@ -41,6 +41,11 @@ const config = {
         test: /\.(png|svg|jpg|gif|pdf)$/,
         use: ["file-loader"],
       }, // transpile image files
+
+      {
+        test: /\.mp4$/,
+        use: "file-loader?name=videos/[name].[ext]",
+      },
     ],
   },
 };
