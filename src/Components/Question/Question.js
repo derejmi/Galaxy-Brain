@@ -1,4 +1,5 @@
 import React from "react";
+import "./Question.css";
 
 const Question = (props) => {
   const arrayIndex = props.questionNumber - 1;
@@ -6,7 +7,7 @@ const Question = (props) => {
 
   return (
     <div>
-      <h1>{atob(question)}</h1>
+      <p>{atob(question)}</p>
     </div>
   );
 };
