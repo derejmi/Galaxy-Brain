@@ -30,15 +30,7 @@ class Answers extends React.Component {
     const newArray = [...answersArray];
     newArray.splice(randomNo, 0, correct);
     return (
-
       <div className="answerButtonsContainer">
-        {newArray.map((elem, idx) => (
-          <button
-            className="answerButtons"
-            onClick={this.props.handleAnswerClick}
-            key={idx + 1}
-          >
-      <div>
         {newArray.map((elem, idx) => (
           <button onClick={this.props.handleAnswerClick} key={idx + 1}>
             {atob(elem)}
