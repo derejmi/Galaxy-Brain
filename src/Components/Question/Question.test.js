@@ -50,7 +50,7 @@ describe("Question", () => {
   });
 
   test("renders Quiz question", () => {
-    expect(component.find("h1").text()).toContain(
+    expect(component.find("p").text()).toContain(
       "Who was the British Prime Minister at the outbreak of the Second World War?"
     );
   });

@@ -1,23 +1,30 @@
-import Form from "./index.js";
-import QuestionContainer from "../../Containers/QuestionContainer.js";
+import Form from "../index.js";
+import stubCategories from "./Form.dummy.js";
 import { shallow } from "enzyme";
 
 describe("Form", () => {
-  let component, handleInputChange, handleClick;
+  let component, handleInputChange, handleClick, compClick, handleInputC;
 
   const stubPlayers = "2";
   const stubRounds = "3";
+  const stubDifficulty = "easy";
 
   beforeEach(() => {
     handleClick = jest.fn();
     handleInputChange = jest.fn();
+    compClick = jest.fn();
+    handleInputC = jest.fn();
 
     component = shallow(
       <Form
-        rounds={stubRounds}
-        players={stubPlayers}
         handleClick={handleClick}
         handleInputChange={handleInputChange}
+        rounds={stubRounds}
+        players={stubPlayers}
+        difficulty={stubDifficulty}
+        categories={stubCategories}
+        compClick={compClick}
+        handleInputC={handleInputC}
       />
     );
   });
