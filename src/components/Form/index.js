@@ -41,7 +41,18 @@ class Form extends Component {
           />
         </form>
 
-        <form id="form-difficulty">
+        <h2 id="select">Choose a category</h2>
+        <select onChange={this.props.handleInputC}>
+          {this.props.categories.map((category) => {
+            return (
+              <option value={category.id} name="id" key={category.id}>
+                {category.name}{" "}
+              </option>
+            );
+          })}
+        </select>
+
+        <div id="form-difficulty">
           <h2>Choose a difficulty</h2>
           <button
             id="button-easy"
@@ -75,20 +86,7 @@ class Form extends Component {
           >
             Random
           </button>
-        </form>
-
-        <select
-          onClick={this.props.compClick}
-          onChange={this.props.handleInputC}
-        >
-          {this.props.categories.map((category) => {
-            return (
-              <option value={category.id} name="id" key={category.id}>
-                {category.name}{" "}
-              </option>
-            );
-          })}
-        </select>
+        </div>
 
         <button id="button-start" onClick={this.props.handleClick}>
           Start game
