@@ -6,13 +6,10 @@ class Form extends Component {
     console.log(this.props);
     return (
       <div className="form">
-
         <p>
           Welcome to Galaxy Brain, a multiplayer game where users can take turns
           to answer trivia questions!
         </p>
-
-        <div className="playerandrounds">
 
         <h2 id="select">Select number of players and rounds</h2>
 
@@ -28,7 +25,6 @@ class Form extends Component {
             onChange={this.props.handleInputChange}
           />
         </form>
-        {/* </div> */}
 
         <form id="form-rounds">
           <input
@@ -43,7 +39,18 @@ class Form extends Component {
           />
         </form>
 
-        <form id="form-difficulty">
+        <h2 id="select">Choose a category</h2>
+        <select onChange={this.props.handleInputC}>
+          {this.props.categories.map((category) => {
+            return (
+              <option value={category.id} name="id" key={category.id}>
+                {category.name}{" "}
+              </option>
+            );
+          })}
+        </select>
+
+        <div id="form-difficulty">
           <h2>Choose a difficulty</h2>
           <button
             id="button-easy"
@@ -77,25 +84,11 @@ class Form extends Component {
           >
             Random
           </button>
-        </form>
-
-        <select
-          onClick={this.props.compClick}
-          onChange={this.props.handleInputC}
-        >
-          {this.props.categories.map((category) => {
-            return (
-              <option value={category.id} name="id" key={category.id}>
-                {category.name}{" "}
-              </option>
-            );
-          })}
-        </select>
+        </div>
 
         <button id="button-start" onClick={this.props.handleClick}>
           Start game
         </button>
-
       </div>
     );
   }

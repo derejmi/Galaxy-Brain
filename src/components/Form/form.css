@@ -71,3 +71,7 @@ input {
   margin-bottom: 50px;
   font-size: 25px;
 }
+
+select {
+  font-size: 25px;
+}
