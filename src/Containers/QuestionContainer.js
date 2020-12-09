@@ -1,10 +1,8 @@
 import React from "react";
 // import Score from "../components/Score.js";
-
 import Question from "../Components/Question/Question.js";
 import Answers from "../Components/Answers/Answers.js";
 import Form from "../components/Form/index";
-import "./QuestionContainer";
 
 class QuestionContainer extends React.Component {
   //URL not needed just for reference
@@ -19,6 +17,19 @@ class QuestionContainer extends React.Component {
     OPTION: 0,
   };
 
+  componentDidMount() {
+    console.log("mount works");
+    const url = "https://opentdb.com/api_category.php";
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          categories: data.trivia_categories,
+        });
+      });
+  }
+
   handleInputChange = (e) => {
     e.preventDefault();
     this.setState({
@@ -29,18 +40,6 @@ class QuestionContainer extends React.Component {
   handleClick = (event) => {
     event.preventDefault();
     this.fetchAPI();
-  };
-  compClick = (e) => {
-    e.preventDefault();
-    const url = "https://opentdb.com/api_category.php";
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        this.setState({
-          categories: data.trivia_categories,
-        });
-      });
   };
 
   handleInputC = (e) => {
@@ -134,7 +133,6 @@ class QuestionContainer extends React.Component {
               players={this.state.players}
               difficulty={this.state.difficulty}
               categories={this.state.categories}
-              compClick={this.compClick}
               handleInputC={this.handleInputC}
             />
           );
@@ -142,12 +140,10 @@ class QuestionContainer extends React.Component {
           this.state.questionNumber <= this.state.total:
           return (
             <div>
-              <h2>
-                <Question
-                  data={this.state.selection}
-                  questionNumber={this.state.questionNumber}
-                />
-              </h2>
+              <Question
+                data={this.state.selection}
+                questionNumber={this.state.questionNumber}
+              />
               <Answers
                 data={this.state.selection}
                 questionNumber={this.state.questionNumber}
@@ -156,20 +152,7 @@ class QuestionContainer extends React.Component {
             </div>
           );
         case this.state.questionNumber > 0 && !this.state.total:
-          return (
-            <>
-              <h1 className="message">Please fill in all form fields </h1>
-              <br></br>
-              <br></br>
-              <br></br>
-              <button
-                className="returnButton"
-                onClick={() => location.reload()}
-              >
-                Return
-              </button>
-            </>
-          );
+          return <h1>Please fill in all form fields </h1>;
         default:
           return <h1>Game Over! Winner was player...</h1>;
       }
