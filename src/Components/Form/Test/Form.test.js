@@ -29,10 +29,17 @@ describe("Form", () => {
     );
   });
 
+  //test for p greeting
+  test("It has a paragraph welcoming the user", () => {
+    expect(component.find("p").text()).toBe(
+      "Welcome to Galaxy Brain, a multiplayer game where users can take turns to answer trivia questions!"
+    );
+  });
+
   //test for h2 header
 
   test("It has a heading telling the user to select players and rounds", () => {
-    expect(component.find("#select").text()).toBe(
+    expect(component.find("#select-header").text()).toBe(
       "Select number of players and rounds"
     );
   });
@@ -76,14 +83,39 @@ describe("Form", () => {
 
   test("it calls on handleInputChange after an onChange synthetic event", () => {
     const input = component.find("#input-rounds");
-    // const parent = shallow(<QuestionContainer />);
-    // const initState = parent.state("players");
+
     input.simulate("change", { target: { value: "5" } });
-    // const newState = parent.state("players");
+
     expect(handleInputChange).toHaveBeenNthCalledWith(1, {
       target: { value: "5" },
     });
-    // expect(newState).not.toEqual(initState);
+  });
+
+  //category form
+
+  test("A category dropdown is rendered with a header", () => {
+    let dropdown = component.find("select");
+    expect(dropdown).toHaveLength(1);
+    let header = component.find("#select");
+    expect(header.text()).toBe("Choose a category");
+  });
+
+  test("The dropdown calls on handleInputC after an onChange synthetic event", () => {
+    let dropdown = component.find("select");
+    dropdown.simulate("change");
+    expect(handleInputC).toHaveBeenCalledTimes(1);
+  });
+
+  test("There are 24 category options", () => {
+    let dropdown = component.find("select");
+    let options = dropdown.find("option");
+    expect(options).toHaveLength(24);
+  });
+
+  test("Expect 3rd category to show 'Entertainment: Film'", () => {
+    let dropdown = component.find("select");
+    let options = dropdown.find("option");
+    expect(options.at(2).text()).toBe("Entertainment: Film ");
   });
 
   //difficulty selection tests
@@ -98,7 +130,7 @@ describe("Form", () => {
     let form = component.find("#form-difficulty");
 
     const buttons = form.find("button");
-    expect(buttons).toHaveLength(4);
+    expect(buttons).toHaveLength(3);
 
     let easyButton = form.find("#button-easy");
     expect(easyButton.text()).toBe("Easy");
@@ -108,12 +140,9 @@ describe("Form", () => {
 
     let hardButton = form.find("#button-hard");
     expect(hardButton.text()).toBe("Hard");
-
-    let randomButton = form.find("#button-random");
-    expect(randomButton.text()).toBe("Random");
   });
 
-  //test for handleClick
+  //test for handleInputChange on difficulty selection
 
   test("The easy buttton calls on handleInputChange after an onClick synthetic event", () => {
     const form = component.find("#form-difficulty");
@@ -136,21 +165,14 @@ describe("Form", () => {
     expect(handleInputChange).toHaveBeenCalledTimes(1);
   });
 
-  test("The random buttton calls on handleInputChange after an onClick synthetic event", () => {
-    const form = component.find("#form-difficulty");
-    const button = form.find("#button-random");
-    button.simulate("click");
-    expect(handleInputChange).toHaveBeenCalledTimes(1);
-  });
-
+  //test for start button
   test("There is button to start the quiz and it has the right text content", () => {
     const startButton = component.find("#button-start");
     expect(startButton).toHaveLength(1);
     expect(startButton.text()).toBe("Start game");
   });
 
-  //test for handleClick
-  test("The random buttton calls on handleClick after an onClick synthetic event", () => {
+  test("The start buttton calls on handleClick after an onClick synthetic event", () => {
     const button = component.find("#button-start");
     button.simulate("click");
     expect(handleClick).toHaveBeenCalledTimes(1);
