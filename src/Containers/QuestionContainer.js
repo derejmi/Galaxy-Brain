@@ -1,8 +1,9 @@
 import React from "react";
 // import Score from "../components/Score.js";
-import Question from "../components/Question.js";
-import Answers from "../components/Answers.js";
+import Question from "../components/Question/Question.js";
+import Answers from "../components/Answers/Answers.js";
 import Form from "../components/Form/index";
+import "./QuestionContainer";
 
 class QuestionContainer extends React.Component {
   //URL not needed just for reference
@@ -14,6 +15,7 @@ class QuestionContainer extends React.Component {
     total: "",
     selection: [],
   };
+
   handleInputChange = (e) => {
     e.preventDefault();
     this.setState({
@@ -114,10 +116,12 @@ class QuestionContainer extends React.Component {
           this.state.questionNumber <= this.state.total:
           return (
             <div>
-              <Question
-                data={this.state.selection}
-                questionNumber={this.state.questionNumber}
-              />
+              <h2>
+                <Question
+                  data={this.state.selection}
+                  questionNumber={this.state.questionNumber}
+                />
+              </h2>
               <Answers
                 data={this.state.selection}
                 questionNumber={this.state.questionNumber}
@@ -126,7 +130,20 @@ class QuestionContainer extends React.Component {
             </div>
           );
         case this.state.questionNumber > 0 && !this.state.total:
-          return <h1>Please fill in all form fields </h1>;
+          return (
+            <>
+              <h1 className="message">Please fill in all form fields </h1>
+              <br></br>
+              <br></br>
+              <br></br>
+              <button
+                className="returnButton"
+                onClick={() => location.reload()}
+              >
+                Return
+              </button>
+            </>
+          );
         default:
           return <h1>Game Over! Winner was player...</h1>;
       }
