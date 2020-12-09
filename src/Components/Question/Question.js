@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./Question.css";
 
 const Question = (props) => {
@@ -7,7 +8,10 @@ const Question = (props) => {
 
   return (
     <div>
+
       <p>{atob(question)}</p>
+
+
     </div>
   );
 };
