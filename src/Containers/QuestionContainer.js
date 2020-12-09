@@ -27,28 +27,26 @@ class QuestionContainer extends React.Component {
     event.preventDefault();
     this.fetchAPI();
   };
-  compClick = e => {
+  compClick = (e) => {
     e.preventDefault();
-    const url = "https://opentdb.com/api_category.php"
+    const url = "https://opentdb.com/api_category.php";
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         this.setState({
           categories: data.trivia_categories,
-        
         });
-        
-      })}
+      });
+  };
 
-   handleInputC = (e) => {
-        e.preventDefault();
-        console.log(e, "hello")
-        this.setState({
-          [e.target.tagName]: e.target.value,
-        });
-      };
-
+  handleInputC = (e) => {
+    e.preventDefault();
+    console.log(e, "hello");
+    this.setState({
+      OPTION: e.target.value,
+    });
+  };
 
   setPlayers = () => {
     switch (this.state.players) {
@@ -90,7 +88,7 @@ class QuestionContainer extends React.Component {
     const r = this.state.rounds;
     const p = this.state.players;
     const multi = p * r;
-    let url = `https://opentdb.com/api.php?amount=${multi}&category=10&difficulty=${this.state.difficulty}&type=multiple&encode=base64`;
+    let url = `https://opentdb.com/api.php?amount=${multi}&category=${this.state.OPTION}&difficulty=${this.state.difficulty}&type=multiple&encode=base64`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

@@ -71,15 +71,13 @@ class Form extends Component {
           </button>
         </form>
 
-        <select onClick={this.props.compClick}>
+        <select
+          onClick={this.props.compClick}
+          onChange={this.props.handleInputC}
+        >
           {this.props.categories.map((category) => {
             return (
-              <option
-                value={category.id}
-                name="id"
-                key={category.id}
-                onClick={this.props.handleInputC}
-              >
+              <option value={category.id} name="id" key={category.id}>
                 {category.name}{" "}
               </option>
             );
