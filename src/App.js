@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import Form from "./components/Form/index"
 
 import QuestionContainer from "./Containers/QuestionContainer";
-import Background from "./Components/Background/background.gif";
+// import Background from "./Components/Background/background.gif";
 import "./App.css";
 
 class App extends React.Component {
