@@ -142,7 +142,8 @@ class QuestionContainer extends React.Component {
           return (
             <div>
               <Score 
-              current={this.state.current}/>
+              current={this.state.current}
+              playerData={this.state.playerStats}/>
               <Question
                 data={this.state.selection}
                 questionNumber={this.state.questionNumber}
