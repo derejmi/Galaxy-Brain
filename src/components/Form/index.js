@@ -63,6 +63,12 @@ class Form extends Component {
                 <button value="hard" name="difficulty" onClick={this.props.handleInputChange}> Hard</button>
                 <button value="random" name="difficulty" onClick={this.props.handleInputChange}> Random</button>
             </form>
+            <select onClick={this.props.compClick}>
+            {this.props.categories.map((category) => {
+                return <option value={category.id} name="id" key={category.id} onClick={this.props.handleInputC}>{category.name} </option>
+                
+              })}
+              </select>
 
             <button onClick={this.props.handleClick}>Start game</button>    
             </div>
