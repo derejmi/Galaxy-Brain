@@ -6,29 +6,27 @@ class Form extends Component {
     console.log(this.props);
     return (
       <div className="form">
-
         <p>
           Welcome to Galaxy Brain, a multiplayer game where users can take turns
           to answer trivia questions!
         </p>
 
         <div className="playerandrounds">
+          <h2 id="select">Select number of players and rounds</h2>
 
-        <h2 id="select">Select number of players and rounds</h2>
-
-        <form id="form-players">
-          <input
-            id="input-players"
-            type="number"
-            min="1"
-            max="4"
-            name="players"
-            placeholder="Enter the number of players"
-            value={this.props.players}
-            onChange={this.props.handleInputChange}
-          />
-        </form>
-        {/* </div> */}
+          <form id="form-players">
+            <input
+              id="input-players"
+              type="number"
+              min="1"
+              max="4"
+              name="players"
+              placeholder="Enter the number of players"
+              value={this.props.players}
+              onChange={this.props.handleInputChange}
+            />
+          </form>
+        </div>
 
         <form id="form-rounds">
           <input
@@ -95,7 +93,6 @@ class Form extends Component {
         <button id="button-start" onClick={this.props.handleClick}>
           Start game
         </button>
-
       </div>
     );
   }
