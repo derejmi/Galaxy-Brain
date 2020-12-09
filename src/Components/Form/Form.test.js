@@ -3,20 +3,20 @@ import QuestionContainer from "../../Containers/QuestionContainer.js";
 import { shallow } from "enzyme";
 
 describe("Form", () => {
-  let component, handleInputChange, handleInputClick;
+  let component, handleInputChange, handleClick;
 
   const stubPlayers = "2";
   const stubRounds = "3";
 
   beforeEach(() => {
-    handleInputClick = jest.fn();
+    handleClick = jest.fn();
     handleInputChange = jest.fn();
 
     component = shallow(
       <Form
         rounds={stubRounds}
         players={stubPlayers}
-        handleInputClick={handleInputClick}
+        handleClick={handleClick}
         handleInputChange={handleInputChange}
       />
     );
@@ -44,9 +44,9 @@ describe("Form", () => {
     expect(input.props().value).toBe("2");
   });
 
-  //test for handleInput change!
   test("it updates state on user input", () => {
     const input = component.find("#input-players");
+
     input.simulate("change", { target: { value: "3" } });
     expect(handleInputChange).toHaveBeenNthCalledWith(1, {
       target: { value: "3" },
@@ -67,7 +67,17 @@ describe("Form", () => {
     expect(input.props().value).toBe("3");
   });
 
-  //test for handleInput change!
+  test("it calls on handleInputChange after an onChange synthetic event", () => {
+    const input = component.find("#input-rounds");
+    // const parent = shallow(<QuestionContainer />);
+    // const initState = parent.state("players");
+    input.simulate("change", { target: { value: "5" } });
+    // const newState = parent.state("players");
+    expect(handleInputChange).toHaveBeenNthCalledWith(1, {
+      target: { value: "5" },
+    });
+    // expect(newState).not.toEqual(initState);
+  });
 
   //difficulty selection tests
   test("A difficulty form is rendered with a heading telling the user to choose a difficulty", () => {
@@ -96,7 +106,35 @@ describe("Form", () => {
     expect(randomButton.text()).toBe("Random");
   });
 
-  //test for handleInputChange
+  //test for handleClick
+
+  test("The easy buttton calls on handleInputChange after an onClick synthetic event", () => {
+    const form = component.find("#form-difficulty");
+    const button = form.find("#button-easy");
+    button.simulate("click");
+    expect(handleInputChange).toHaveBeenCalledTimes(1);
+  });
+
+  test("The medium buttton calls on handleInputChange after an onClick synthetic event", () => {
+    const form = component.find("#form-difficulty");
+    const button = form.find("#button-medium");
+    button.simulate("click");
+    expect(handleInputChange).toHaveBeenCalledTimes(1);
+  });
+
+  test("The hard buttton calls on handleInputChange after an onClick synthetic event", () => {
+    const form = component.find("#form-difficulty");
+    const button = form.find("#button-hard");
+    button.simulate("click");
+    expect(handleInputChange).toHaveBeenCalledTimes(1);
+  });
+
+  test("The random buttton calls on handleInputChange after an onClick synthetic event", () => {
+    const form = component.find("#form-difficulty");
+    const button = form.find("#button-random");
+    button.simulate("click");
+    expect(handleInputChange).toHaveBeenCalledTimes(1);
+  });
 
   test("There is button to start the quiz and it has the right text content", () => {
     const startButton = component.find("#button-start");
@@ -105,4 +143,9 @@ describe("Form", () => {
   });
 
   //test for handleClick
+  test("The random buttton calls on handleClick after an onClick synthetic event", () => {
+    const button = component.find("#button-start");
+    button.simulate("click");
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
 });
