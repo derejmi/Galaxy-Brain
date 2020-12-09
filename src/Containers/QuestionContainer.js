@@ -13,6 +13,8 @@ class QuestionContainer extends React.Component {
     rounds: "",
     total: "",
     selection: [],
+    categories: [],
+    OPTION: 0,
   };
   handleInputChange = (e) => {
     e.preventDefault();
@@ -25,6 +27,28 @@ class QuestionContainer extends React.Component {
     event.preventDefault();
     this.fetchAPI();
   };
+  compClick = e => {
+    e.preventDefault();
+    const url = "https://opentdb.com/api_category.php"
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          categories: data.trivia_categories,
+        
+        });
+        
+      })}
+
+   handleInputC = (e) => {
+        e.preventDefault();
+        console.log(e, "hello")
+        this.setState({
+          [e.target.tagName]: e.target.value,
+        });
+      };
+
 
   setPlayers = () => {
     switch (this.state.players) {
@@ -108,6 +132,9 @@ class QuestionContainer extends React.Component {
               rounds={this.state.rounds}
               players={this.state.players}
               difficulty={this.state.difficulty}
+              categories={this.state.categories}
+              compClick={this.compClick}
+              handleInputC={this.handleInputC}
             />
           );
         case this.state.questionNumber > 0 &&

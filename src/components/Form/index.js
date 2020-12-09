@@ -70,6 +70,7 @@ class Form extends Component {
           />
         </form>
 
+
         <form id="form-difficulty">
           <h2>Choose a difficulty</h2>
           <button
@@ -105,6 +106,56 @@ class Form extends Component {
             Random
           </button>
         </form>
+
+    // fetchAPI = () => {
+    //     console.log("Lets fetch some json")
+    //     const r = this.state.rounds
+    //     const p = this.state.players
+    //     const multi = p*r
+    //     let url  = `https://opentdb.com/api.php?amount=${multi}&category=10&difficulty=${this.state.difficulty}&type=multiple`;
+    //     fetch(url)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data);
+    //             this.setState({selection: data.results })
+    //             console.log("check here")
+    //             console.log(this.state.selection)
+    //         })
+    // }
+
+    render(){
+        console.log(this.props)
+        return (
+            <div className="form">
+                <h2>Select number of players and rounds</h2>
+            
+            <form>
+            <input type="number" min="1" max="4" name="players" placeholder="Enter the number of players" value={this.props.players} onChange={this.props.handleInputChange} />
+            </form>
+            {/* </div> */}
+
+            <form >
+            <input type="number" min="1" max="5" name="rounds" placeholder="Enter the number of rounds" value={this.props.rounds} onChange={this.props.handleInputChange} />
+            </form>
+            
+            <form >
+                <h2>Choose a difficulty</h2>
+                <button value="easy" name="difficulty"  onClick={this.props.handleInputChange}> Easy</button>
+                <button value="medium" name="difficulty" onClick={this.props.handleInputChange}> Medium</button>
+                <button value="hard" name="difficulty" onClick={this.props.handleInputChange}> Hard</button>
+                <button value="random" name="difficulty" onClick={this.props.handleInputChange}> Random</button>
+            </form>
+            <select onClick={this.props.compClick}>
+            {this.props.categories.map((category) => {
+                return <option value={category.id} name="id" key={category.id} onClick={this.props.handleInputC}>{category.name} </option>
+                
+              })}
+              </select>
+
+            <button onClick={this.props.handleClick}>Start game</button>    
+            </div>
+        )}
+
 
         <button id="button-start" onClick={this.props.handleClick}>
           Start game
