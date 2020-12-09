@@ -1,73 +1,80 @@
-import React, { Component } from 'react';
-import './form.css'
+import React, { Component } from "react";
+import "./form.css";
 
 class Form extends Component {
-    // state = {
-    //     difficulty: "",
-    //     players: "",
-    //     rounds: "",
-    //     selection: []
-    // }
+  render() {
+    console.log(this.props);
+    return (
+      <div className="form">
+        <p>
+          Welcome to Galaxy Brain, a multiplayer game where users can take turns
+          to answer trivia questions!
+        </p>
 
+        <div className="playerandrounds">
+          <h2>Select number of players and rounds</h2>
 
-    // handleInputChange = (e) => {
-    //     e.preventDefault();
-    //     this.setState({
-    //         [e.target.name]: e.target.value
-    //     });
-    // }
+          <form>
+            <input
+              className="players"
+              type="number"
+              min="1"
+              max="4"
+              name="players"
+              placeholder="Enter the number of players"
+              value={this.props.players}
+              onChange={this.props.handleInputChange}
+            />
+          </form>
 
+          <form>
+            <input
+              className="rounds"
+              type="number"
+              min="1"
+              max="5"
+              name="rounds"
+              placeholder="Enter the number of rounds"
+              value={this.props.rounds}
+              onChange={this.props.handleInputChange}
+            />
+          </form>
+        </div>
 
-    // handleClick = (event) => {
-    //     event.preventDefault();
-    //     this.fetchAPI()
-    // }
+        <div className="difficulty">
+          <h3>Choose a difficulty</h3>
+          <form>
+            <button
+              value="easy"
+              name="difficulty"
+              onClick={this.props.handleInputChange}
+            >
+              {" "}
+              Easy
+            </button>
+            <button
+              value="medium"
+              name="difficulty"
+              onClick={this.props.handleInputChange}
+            >
+              {" "}
+              Medium
+            </button>
+            <button
+              value="hard"
+              name="difficulty"
+              onClick={this.props.handleInputChange}
+            >
+              {" "}
+              Hard
+            </button>
+          </form>
 
-
-
-    // fetchAPI = () => {
-    //     console.log("Lets fetch some json")
-    //     const r = this.state.rounds
-    //     const p = this.state.players
-    //     const multi = p*r
-    //     let url  = `https://opentdb.com/api.php?amount=${multi}&category=10&difficulty=${this.state.difficulty}&type=multiple`;
-    //     fetch(url)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data);
-    //             this.setState({selection: data.results })
-    //             console.log("check here")
-    //             console.log(this.state.selection)
-    //         })
-    // }
-
-    render(){
-        console.log(this.props)
-        return (
-            <div className="form">
-                <h2>Select number of players and rounds</h2>
-            
-            <form>
-            <input type="number" min="1" max="4" name="players" placeholder="Enter the number of players" value={this.props.players} onChange={this.props.handleInputChange} />
-            </form>
-            {/* </div> */}
-
-            <form >
-            <input type="number" min="1" max="5" name="rounds" placeholder="Enter the number of rounds" value={this.props.rounds} onChange={this.props.handleInputChange} />
-            </form>
-            
-            <form >
-                <h2>Choose a difficulty</h2>
-                <button value="easy" name="difficulty"  onClick={this.props.handleInputChange}> Easy</button>
-                <button value="medium" name="difficulty" onClick={this.props.handleInputChange}> Medium</button>
-                <button value="hard" name="difficulty" onClick={this.props.handleInputChange}> Hard</button>
-                <button value="random" name="difficulty" onClick={this.props.handleInputChange}> Random</button>
-            </form>
-
-            <button onClick={this.props.handleClick}>Start game</button>    
-            </div>
-        )}
-
+          <button onClick={this.props.handleClick}>Start game</button>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Form;
