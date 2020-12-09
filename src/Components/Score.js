@@ -3,8 +3,12 @@ import React from "react";
 const Score = (props) => {
   const playerIndex = props.current
   const b = props.playerData[playerIndex]
+  console.log("playerData",props.playerData)
+  const playerArr = props.playerData
   const a = {...b}
+  console.log("a",a)
   const playerScore=a.score
+
 
   return (
     <div>

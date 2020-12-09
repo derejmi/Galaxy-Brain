@@ -1,5 +1,6 @@
 import React from "react";
 import Score from "../components/Score.js";
+import Winner from "../components/Winner.js";
 import Question from "../components/Question.js";
 import Answers from "../components/Answers.js";
 import Form from "../components/Form/index";
@@ -124,6 +125,7 @@ class QuestionContainer extends React.Component {
     console.log("val",val)
   };
 
+
   render() {
     const view = () => {
       switch (true) {
@@ -158,7 +160,13 @@ class QuestionContainer extends React.Component {
         case this.state.questionNumber > 0 && !this.state.total:
           return <h1>Please fill in all form fields </h1>;
         default:
-          return <h1>Game Over! Winner was player...</h1>;
+         return <div>
+           <Winner 
+           player={this.state.players}
+           current={this.state.current}
+           playerData={this.state.playerStats}
+           />
+         </div>
       }
     };
 
