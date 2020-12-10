@@ -21,6 +21,6 @@ describe("Score", () => {
     expect(wrapper.find("#s").text()).toContain("Player");
   });
   test("it renders somethign", () => {
-    expect(wrapper.find("#ss").toHaveLength(1));
+    expect(wrapper.find("#ss")).toHaveLength(1);
   });
 });
