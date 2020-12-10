@@ -14,7 +14,7 @@ describe('QuestionContainer', () => {
     const stubPlayers=0
     const stubDifficulty='easy'
     const stubRounds=0
-    const stubTotal=0
+    const stubTotal=""
     const stubOption=0
     const stubSelection=[
         {
@@ -61,9 +61,11 @@ describe('QuestionContainer', () => {
         component = shallow(
             <QuestionContainer 
             questionNumber={stubQuestionNumber}
+            total={stubTotal}
             />)
             component.setState({ questionNumber: 1})
-            expect(component.find('.message')).toBeTruthy();
+            component.setState({ total: ""})
+            expect(component.find('.message')).toHaveLength(1);
     });
     test("it renders winners screen", () => {
         component = shallow(
@@ -74,6 +76,7 @@ describe('QuestionContainer', () => {
             />)
         expect(component.find('Winner')).toBeTruthy();
     });
+    
     test('fetch api', async(done) => {
         let fakeresponse={ id: 9, name: "General Knowledge" }
         fetch.mockresponse(JSON.stringify(fakeresponse))
