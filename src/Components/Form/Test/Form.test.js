@@ -112,6 +112,8 @@ describe("Form", () => {
     expect(options).toHaveLength(24);
   });
 
+  
+
   test("Expect 3rd category to show 'Entertainment: Film'", () => {
     let dropdown = component.find("select");
     let options = dropdown.find("option");
