@@ -11,35 +11,29 @@ class Form extends Component {
           to answer trivia questions!
         </p>
 
-        <div className="playerandrounds">
-          <h2 id="select-header">Select number of players and rounds</h2>
+        <h2 id="select-header">Select number of players and rounds</h2>
 
-          <form id="form-players">
-            <input
-              id="input-players"
-              type="number"
-              min="1"
-              max="4"
-              name="players"
-              placeholder="Enter the number of players"
-              value={this.props.players}
-              onChange={this.props.handleInputChange}
-            />
-          </form>
-        </div>
+        <input
+          id="input-players"
+          type="number"
+          min="1"
+          max="4"
+          name="players"
+          placeholder="Enter the number of players"
+          value={this.props.players}
+          onChange={this.props.handleInputChange}
+        />
 
-        <form id="form-rounds">
-          <input
-            id="input-rounds"
-            type="number"
-            min="1"
-            max="5"
-            name="rounds"
-            placeholder="Enter the number of rounds"
-            value={this.props.rounds}
-            onChange={this.props.handleInputChange}
-          />
-        </form>
+        <input
+          id="input-rounds"
+          type="number"
+          min="1"
+          max="5"
+          name="rounds"
+          placeholder="Enter the number of rounds"
+          value={this.props.rounds}
+          onChange={this.props.handleInputChange}
+        />
 
         <h2 id="select">Choose a category</h2>
         <select onChange={this.props.handleInputC}>
@@ -81,7 +75,7 @@ class Form extends Component {
         </div>
 
         <button id="button-start" onClick={this.props.handleClick}>
-          Start game
+          <span>Start game</span>
         </button>
       </div>
     );

@@ -132,6 +132,9 @@ class QuestionContainer extends React.Component {
       stateCopy.playerStats[currentPlayerIndex].score += 1;
       this.setState(stateCopy);
       this.nextTurn();
+      console.log("YOU GUESSED RIGHT");
+    } else {
+      console.log("YOU GUESSED WRONG");
     }
     //
     this.setState({ questionNumber: prevCount + 1 });
@@ -183,7 +186,20 @@ class QuestionContainer extends React.Component {
             </div>
           );
         case this.state.questionNumber > 0 && !this.state.total:
-          return <h1>Please fill in all form fields </h1>;
+          return (
+            <>
+              <h1 className="message">Please fill in all form fields </h1>
+              <br></br>
+              <br></br>
+              <br></br>
+              <button
+                className="returnButton"
+                onClick={() => location.reload()}
+              >
+                Return
+              </button>
+            </>
+          );
         default:
           return (
             <div>

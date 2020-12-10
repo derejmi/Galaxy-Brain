@@ -1,11 +1,27 @@
 .answerButtons {
-  margin: 1%;
-  background-color: grey; /* Green */
+  margin-right: 2%;
+  margin-left: 2%;
+  margin-bottom: 2%;
+  background-color: #292442;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 30px 0px 30px 0px;
   text-align: center;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 25px;
+  width: 40%;
+}
+
+.answerButtons:active {
+  margin-right: 2%;
+  margin-left: 2%;
+  margin-bottom: 2%;
+  background-color: #483f77;
+  border: none;
+  color: white;
+  padding: 30px 0px 30px 0px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 25px;
   width: 40%;
 }

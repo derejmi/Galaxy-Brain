@@ -1,26 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap");
 
-form {
-  /* position: absolute; */
+.form {
+  /* overflow: hidden; */
 }
 
+/* Galaxy Brain description */
 p {
   font-family: "Roboto Slab", serif;
   color: rgb(255, 255, 255, 0.6);
   font-size: 40px;
   text-align: justify;
-  padding: 5%;
-  margin-top: -100px;
+  padding-left: 3%;
+  padding-right: 3%;
+  margin-top: -20px;
+  /* width: 90%; */
   /* position: absolute; */
 }
 
+/* smaller text asking for user input */
 h2 {
   font-family: "Roboto Slab", serif;
   color: rgb(255, 255, 255, 0.6);
   font-size: 30px;
   text-align: center;
-  padding: 5%;
-  margin-top: -100px;
+  padding: 1%;
+  margin-top: 80px;
 }
 
 h3 {
@@ -44,13 +48,14 @@ h4 {
 button {
   margin: 1%;
   background-color: #292442;
+  border-radius: 4px;
   border: none;
   color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 22px;
 }
 
 button:active {
@@ -62,16 +67,58 @@ button:active {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 22px;
 }
 
 input {
-  width: 35%;
+  width: 25%;
   height: 10%;
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
   font-size: 25px;
+  margin-right: 2%;
+  margin-left: 2%;
 }
 
 select {
   font-size: 25px;
+}
+
+#button-start {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: rgb(74, 52, 102);
+  border: 2px solid white;
+  color: #ffffff;
+  text-align: center;
+  font-size: 28px;
+  padding: 10px;
+  width: 250px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-top: 60px;
+}
+
+#button-start span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#button-start span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+#button-start:hover span {
+  padding-right: 25px;
+}
+
+#button-start:hover span:after {
+  opacity: 1;
+  right: 0;
 }

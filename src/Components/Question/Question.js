@@ -8,10 +8,7 @@ const Question = (props) => {
 
   return (
     <div>
-
       <p>{atob(question)}</p>
-
-
     </div>
   );
 };
