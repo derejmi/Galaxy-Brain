@@ -12,7 +12,7 @@ class Form extends Component {
         </p>
 
         <div className="playerandrounds">
-          <h2 id="select">Select number of players and rounds</h2>
+          <h2 id="select-header">Select number of players and rounds</h2>
 
           <form id="form-players">
             <input
@@ -77,14 +77,6 @@ class Form extends Component {
             onClick={this.props.handleInputChange}
           >
             Hard
-          </button>
-          <button
-            id="button-random"
-            value="random"
-            name="difficulty"
-            onClick={this.props.handleInputChange}
-          >
-            Random
           </button>
         </div>
 
