@@ -1,4 +1,5 @@
 import React from "react";
+import "./Winner.css";
 
 const Winner = (props) => {
   const playerNumber = props.players;
@@ -37,16 +38,38 @@ const Winner = (props) => {
 
   if (winningPlayer.length > 1) {
     return (
-      <div>
-        <h1 id="multiple-header">Game Over! Winners were ...{str}</h1>
-        <button onClick={refreshPage}>Click to reload!</button>
+      <div className="winnerBackground">
+        <div className="pyro">
+          <div className="before"></div>
+          <div className="after"></div>
+        </div>
+        <h1 id="multiple-header">Game Over! Winners were {str}</h1>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <button className="reloadButton" onClick={refreshPage}>
+          Click to reload!
+        </button>
       </div>
     );
   } else {
     return (
-      <div>
-        <h1 id="single-header">Game Over! Winner was ...{str}</h1>
-        <button onClick={refreshPage}>Click to reload!</button>
+      <div className="winnerBackground">
+        <div className="pyro">
+          <div className="before"></div>
+          <div className="after"></div>
+        </div>
+        <h1 id="single-header">Game Over! Winner was {str}</h1>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <button className="reloadButton" onClick={refreshPage}>
+          Click to reload!
+        </button>
       </div>
     );
   }
