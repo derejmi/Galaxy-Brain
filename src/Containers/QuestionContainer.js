@@ -109,7 +109,6 @@ class QuestionContainer extends React.Component {
           total: multi,
         });
         this.setPlayers();
-
         console.log("check here");
         console.log(this.state.selection);
       });
