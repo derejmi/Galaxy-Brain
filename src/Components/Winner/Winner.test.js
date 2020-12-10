@@ -41,7 +41,7 @@ describe("Winner", () => {
       />
     );
     expect(component.find("#single-header").text()).toContain(
-      "Game Over! Winner was ..."
+      "Game Over! Winner was"
     );
     expect(component.find("#single-header").text()).toContain(
       "player 1 | Score:4"
@@ -89,7 +89,7 @@ describe("Winner", () => {
     );
 
     expect(component.find("#multiple-header").text()).toContain(
-      "Game Over! Winners were ..."
+      "Game Over! Winners were"
     );
     expect(component.find("#multiple-header").text()).toContain(
       "player 1 | Score:3, player 3 | Score:3"
