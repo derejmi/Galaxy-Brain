@@ -38,14 +38,14 @@ const Winner = (props) => {
   if (winningPlayer.length > 1) {
     return (
       <div>
-        <h1>Game Over! Winners were ...{str}</h1>
+        <h1 id="multiple-header">Game Over! Winners were ...{str}</h1>
         <button onClick={refreshPage}>Click to reload!</button>
       </div>
     );
   } else {
     return (
       <div>
-        <h1>Game Over! Winner was ...{str}</h1>
+        <h1 id="single-header">Game Over! Winner was ...{str}</h1>
         <button onClick={refreshPage}>Click to reload!</button>
       </div>
     );

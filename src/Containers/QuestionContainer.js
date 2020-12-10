@@ -17,7 +17,7 @@ class QuestionContainer extends React.Component {
     categories: [],
     OPTION: 0,
     playerStats: [],
-    current: 0
+    current: 0,
   };
 
   componentDidMount() {
@@ -56,7 +56,10 @@ class QuestionContainer extends React.Component {
   setPlayers = () => {
     switch (this.state.players) {
       case "1":
-        this.setState({ playerStats: [{ player: "Player 1", score: 0 }], current: 0});
+        this.setState({
+          playerStats: [{ player: "Player 1", score: 0 }],
+          current: 0,
+        });
         break;
       case "2":
         this.setState({
@@ -64,7 +67,7 @@ class QuestionContainer extends React.Component {
             { player: "Player 1", score: 0 },
             { player: "Player 2", score: 0 },
           ],
-          current: 0
+          current: 0,
         });
         break;
       case "3":
@@ -74,7 +77,7 @@ class QuestionContainer extends React.Component {
             { player: "Player 2", score: 0 },
             { player: "Player 3", score: 0 },
           ],
-          current: 0
+          current: 0,
         });
         break;
       default:
@@ -85,11 +88,10 @@ class QuestionContainer extends React.Component {
             { player: "Player 3", score: 0 },
             { player: "Player 4", score: 0 },
           ],
-          current: 0
+          current: 0,
         });
     }
   };
-
 
   fetchAPI = () => {
     console.log("Lets fetch some json");
@@ -125,10 +127,10 @@ class QuestionContainer extends React.Component {
     //if answer = correctAnswer - increment score...
     const currentPlayerIndex = this.state.current;
     //
-    if (answer === correctAnswer){
+    if (answer === correctAnswer) {
       let stateCopy = Object.assign({}, this.state);
       stateCopy.playerStats[currentPlayerIndex].score += 1;
-      this.setState(stateCopy)
+      this.setState(stateCopy);
       this.nextTurn();
     }
     //
@@ -140,6 +142,10 @@ class QuestionContainer extends React.Component {
     const { playerStats, current } = this.state;
     const val = current === playerStats.length - 1 ? 0 : current + 1;
     this.setState({ current: val });
+  };
+
+  refreshPage = () => {
+    window.location.reload();
   };
 
   render() {
@@ -161,9 +167,10 @@ class QuestionContainer extends React.Component {
           this.state.questionNumber <= this.state.total:
           return (
             <div>
-              <Score 
+              <Score
                 current={this.state.current}
-                playerData={this.state.playerStats}/>
+                playerData={this.state.playerStats}
+              />
               <Question
                 data={this.state.selection}
                 questionNumber={this.state.questionNumber}
@@ -177,14 +184,18 @@ class QuestionContainer extends React.Component {
           );
         case this.state.questionNumber > 0 && !this.state.total:
           return <h1>Please fill in all form fields </h1>;
-          default:
-            return <div>
-              <Winner 
-              player={this.state.players}
-              current={this.state.current}
-              playerData={this.state.playerStats}/>
+        default:
+          return (
+            <div>
+              <Winner
+                player={this.state.players}
+                current={this.state.current}
+                playerData={this.state.playerStats}
+                refreshPage={this.refreshPage}
+              />
             </div>
-         }
+          );
+      }
     };
 
     return <div>{view()}</div>;
