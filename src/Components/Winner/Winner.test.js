@@ -1,9 +1,8 @@
-
 import Winner from "./Winner.js";
 import { shallow } from "enzyme";
 
 describe("Winner", () => {
-  let component, onClick;
+  let component;
 
   const stubCurrent = "0";
   const stubPlayers = 3;
@@ -17,6 +16,8 @@ describe("Winner", () => {
     { id: 2, player: "player 2", score: 2 },
     { id: 3, player: "player 3", score: 3 },
   ];
+
+  let refreshPage = jest.fn();
 
   //   // You will usually find `component` name `wrapper` in documentation.
   //   beforeEach(() => {
@@ -36,6 +37,7 @@ describe("Winner", () => {
         player={stubPlayers}
         current={stubCurrent}
         playerData={stubPlayerData1}
+        refreshPage={refreshPage}
       />
     );
     expect(component.find("#single-header").text()).toContain(
@@ -52,25 +54,29 @@ describe("Winner", () => {
         player={stubPlayers}
         current={stubCurrent}
         playerData={stubPlayerData1}
+        refreshPage={refreshPage}
       />
     );
     const button = component.find("button");
     expect(button).toHaveLength(1);
   });
 
-  //   test("expect the button to call the refreshPage method after a synthetic click event", () => {
-  //     component = shallow(
-  //       <Winner
-  //         player={stubPlayers}
-  //         current={stubCurrent}
-  //         playerData={stubPlayerData1}
-  //       />
-  //     );
-  //     const button = component.find("button");
-  //     onClick = jest.fn();
-  //     button.simulate("click");
-  //     expect(onClick).toHaveBeenCalledTimes(1);
-  //   });
+  test("expect the button to call the refreshPage method after a synthetic click event", () => {
+    component = shallow(
+      <Winner
+        player={stubPlayers}
+        current={stubCurrent}
+        playerData={stubPlayerData1}
+        refreshPage={refreshPage}
+      />
+    );
+    const button = component.find("button");
+    window.history.pushState({}, "title", "/testJest");
+    delete window.location;
+    window.location = { reload: jest.fn() };
+    button.simulate("click");
+    expect(window.location.reload).toHaveBeenCalledTimes(1);
+  });
 
   test("renders h1 revealing multiple winners with 'Game Over! Winners were ...", () => {
     component = shallow(
@@ -78,6 +84,7 @@ describe("Winner", () => {
         player={stubPlayers}
         current={stubCurrent}
         playerData={stubPlayerData2}
+        refreshPage={refreshPage}
       />
     );
 
@@ -95,12 +102,10 @@ describe("Winner", () => {
         player={stubPlayers}
         current={stubCurrent}
         playerData={stubPlayerData2}
+        refreshPage={refreshPage}
       />
     );
     const button = component.find("button");
     expect(button).toHaveLength(1);
   });
 });
-
-
-
