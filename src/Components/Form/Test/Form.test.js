@@ -47,9 +47,8 @@ describe("Form", () => {
   //player form tests
 
   test("It renders a player number form and expects a number input", () => {
-    let form = component.find("#form-players");
-    expect(form).toHaveLength(1);
-    const input = form.find("#input-players");
+    let input = component.find("#input-players");
+    expect(input).toHaveLength(1);
     expect(input.props().type).toBe("number");
   });
 
@@ -70,9 +69,8 @@ describe("Form", () => {
   //player round tests
 
   test("It renders a player round form and expects a number input", () => {
-    let form = component.find("#form-rounds");
-    expect(form).toHaveLength(1);
-    const input = form.find("#input-rounds");
+    let input = component.find("#input-rounds");
+    expect(input).toHaveLength(1);
     expect(input.props().type).toBe("number");
   });
 
@@ -111,8 +109,6 @@ describe("Form", () => {
     let options = dropdown.find("option");
     expect(options).toHaveLength(24);
   });
-
-  
 
   test("Expect 3rd category to show 'Entertainment: Film'", () => {
     let dropdown = component.find("select");
