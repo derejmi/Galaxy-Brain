@@ -9,8 +9,8 @@ const Score = (props) => {
 
   return (
     <div>
-      <h1>Player {props.current+1}</h1>
-      <h2>Score {playerScore}</h2>
+      <h1 id="s">Player {props.current+1}</h1>
+      <h2 id="ss">Score {playerScore}</h2>
     </div>
   );
 };
