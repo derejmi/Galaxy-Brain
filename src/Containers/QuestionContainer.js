@@ -3,7 +3,7 @@ import Score from "../Components/Score/Score.js";
 import Winner from "../Components/Winner/Winner.js";
 import Question from "../Components/Question/Question.js";
 import Answers from "../Components/Answers/Answers.js";
-import Form from "../Components/Form/index";
+import Form from "../Components/Form";
 
 class QuestionContainer extends React.Component {
   //URL not needed just for reference
