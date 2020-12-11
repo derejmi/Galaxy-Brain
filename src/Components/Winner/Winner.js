@@ -20,7 +20,7 @@ const Winner = (props) => {
     for (let i = 0; i < playerArr.length; i++) {
       let currentElem = playerArr[i];
       if (currentElem.score === highScore) {
-        winnerArr.push(currentElem.player + " | Score:" + highScore);
+        winnerArr.push(currentElem.player + " | Score : " + highScore);
       }
     }
     return winnerArr;
@@ -43,7 +43,11 @@ const Winner = (props) => {
           <div className="before"></div>
           <div className="after"></div>
         </div>
-        <h1 id="multiple-header">Game Over! Winners were {str}</h1>
+        <h1>Game Over!</h1>
+        <br></br>
+        <br></br>
+        <br></br>
+        <h1 id="multiple-header">Winners were {str}</h1>
         <br></br>
         <br></br>
         <br></br>
@@ -61,7 +65,11 @@ const Winner = (props) => {
           <div className="before"></div>
           <div className="after"></div>
         </div>
-        <h1 id="single-header">Game Over! Winner was {str}</h1>
+        <h1>Game Over!</h1>
+        <br></br>
+        <br></br>
+        <br></br>
+        <h1 id="single-header">Winner was {str}</h1>
         <br></br>
         <br></br>
         <br></br>
