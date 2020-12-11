@@ -9,6 +9,7 @@ class App extends React.Component {
   render() {
     return (
       <>
+        {/* <img src="./brain.png" /> */}
         <h1>Galaxy Brain</h1>
         <main>
           <QuestionContainer />

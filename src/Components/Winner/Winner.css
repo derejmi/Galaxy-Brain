@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap");
+
 .reloadButton {
   width: 100%;
   /* justify-content: center;
@@ -10,6 +12,7 @@
   font-size: 40px;
   font-weight: 200;
   background: #000;
+  font-family: "Roboto Slab", serif;
 }
 
 .reloadButton:active {
