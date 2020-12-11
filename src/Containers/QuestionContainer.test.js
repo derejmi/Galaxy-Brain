@@ -5,11 +5,11 @@ import jestFetchMock from 'jest-fetch-mock';
 jestFetchMock.enableMocks()
 
 describe('QuestionContainer', () => {
-    let component;
+    let component,handleInputC, compClick, handleInputChange, handleClick;
 
     const stubQuestionNumber = 0;
     const stubPlayerStats = [
-        { id: 1, player: "player 1", score: 1 },
+        { id: 1, player: "player 1", score: 0 },
       ]
     const stubPlayers=0
     const stubDifficulty='easy'
@@ -71,12 +71,16 @@ describe('QuestionContainer', () => {
         component = shallow(
             <QuestionContainer 
             players={stubPlayers}
-            current={stubCurrent}
+            playerStats={stubPlayerStats}
+            rounds={stubRounds}
+            selection={stubSelection}
             playerStats={stubPlayerStats}
             />)
-        expect(component.find('Winner')).toBeTruthy();
+            component.setState({ questionNumber: 2})
+            component.setState({ total: 1})
+            component.setState({ rounds: 1})
+        expect(component.find('Winner')).toHaveLength(1);
     });
-    
     test('fetch api', async(done) => {
         let fakeresponse={ id: 9, name: "General Knowledge" }
         fetch.mockresponse(JSON.stringify(fakeresponse))
