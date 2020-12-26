@@ -20,7 +20,8 @@ A galaxy-themed multiplayer trivia quiz game built in React.
 
 ## Technologies
 
-- React, JavaScript, CSS and HTML
+- App: React, JavaScript, CSS and HTML
+- Testing: Jest and Enzyme 
 
 ## Process
 
@@ -36,7 +37,7 @@ A galaxy-themed multiplayer trivia quiz game built in React.
 ## Wins & Challenges
 
 ### Wins
-
+- Effective management of state without the need of tech such as Redux or MobX
 - User can sucessfully choose number of players/rounds and decide category and difficulty of quiz
 - Score count is updated
 - Winner is shown on final page
@@ -53,7 +54,9 @@ A galaxy-themed multiplayer trivia quiz game built in React.
 ## Future Features
 
 - Countdown Timer
-- Add usernames to players
+- User input for player names
+- Allowing players to play from different locations - potentially using sockets.io
+- Authentication
 
 ## Licence
 
