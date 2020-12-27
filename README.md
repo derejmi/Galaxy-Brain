@@ -34,6 +34,10 @@ A galaxy-themed multiplayer trivia quiz game built in React.
 - When good progress was made on these components, we started styling and developing tests for these components.
 - We also took a behavioural approach to building functionality and styling - making iterations based on the behaviour of the app and user experience.
 
+## Component Tree
+
+![](COMPONENT TREE.png)
+
 ## Wins & Challenges
 
 ### Wins
