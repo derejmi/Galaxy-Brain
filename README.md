@@ -36,7 +36,7 @@ A galaxy-themed multiplayer trivia quiz game built in React.
 
 ## Component Tree
 
-![](COMPONENT TREE.png)
+![](component.png)
 
 ## Wins & Challenges
 
